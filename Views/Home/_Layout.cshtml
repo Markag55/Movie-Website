@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/CapstoneStyleSheet.css" />
+    <link rel="shortcut icon" href="~/Images/Logo.png" sizes="30x30" />
+</head>
+<body>
+    <a asp-controller="Home" asp-action="Index"><div class="logo"><img src="~/Images/Logo.png" height="175" width="175" /></div></a>
+    <nav>
+        <ul>
+            <!--<li><img src="~/Images/Logo.png" height="200" width="200"/></li>-->
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="Home" asp-action="About">About</a></li>
+        </ul>
+    </nav>
+    <a asp-controller="Home" asp-action="Index"><div class="title"><h1>Film Planet</h1></div></a>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

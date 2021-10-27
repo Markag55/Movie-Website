@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Film Title";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="~/css/CapstoneStyleSheet.css" rel="stylesheet" />
+    <title>Template</title>
+    <link id="littleLogo" rel="shortcut icon" href="~/Images/Logo.png" sizes="30x30" />
+</head>
+<body>
+    @{
+        foreach (var movies in Model.movie)
+        {
+
+    <div class="genre"><h1>@movies.primaryTitle</h1></div>
+    <label class="idInfo">Genre: @movies.genres</label>
+    <br />
+    <br />
+    <label class="idInfo">Year Released: @movies.startYear</label>
+    <br />
+    <br />   
+            if (@movies.runtimeMinutes != null)
+            {
+    <label class="idInfo">Length: @movies.runtimeMinutes</label>  
+    <br />
+    <br />
+            }
+    <label class="idInfo">Type of Film: @movies.titleType</label>
+    <br />
+    <br />
+            }
+        }
+    
+
+     <br />
+     <br />
+     <br />
+
+    <h1 style="color: #772F1A;
+        font-family: Century">Recomended</h1>
+
+     <table class="table table-bordered table-striped" style="color: #772F1A;
+        font-family: Century">
+         <thead>
+             <tr>
+                 <th>Name</th>
+                 <th>Year</th>
+                 <th>Genre</th>
+                 <th></th>
+             </tr>
+         </thead>
+
+         <tbody>
+             @{
+
+                 foreach (var recomended in Model.recomend)
+                 {
+                     <tr>
+                         <td>@recomended.primaryTitle</td>
+                         <td>@recomended.startYear</td>
+                         <td>@recomended.genres</td>
+                         <td>
+                             <a asp-controller="Home" asp-action="InformationTemplate" asp-route-primarytitle="@recomended.primaryTitle" asp-route-genres="@recomended.genres">View</a>
+                         </td>
+                     </tr>
+                 }
+             }
+         </tbody>
+     </table>
+     <br />
+     <br />
+    <!--Here is where I am going to ask Mark for help to add two buttons.
+        The first button will allow the comment section to apear if the user wants to comment
+        The second button will allow the user to submit the comment
+            The second button will have validation on words within comment section
+             appropriate and that the user enters a name-->
+    <!--Below is the code for the comment section-->
+    <!--<form method='post'>
+      Name: <input type='text' name='name' id='name' />
+
+      Comment: <textarea class="txtarComment" name="comment" id="comment"></textarea>
+
+     <input type='submit' value='Submit' />
+
+      <!--<textarea name='comment' id='comment' height="100" width=""></textarea><br />
+
+      <input type='hidden' name='articleid' id='articleid' value='<? echo $_GET["id"]; ?>' />
+
+
+    </form>-->
+    <!--<br />
+    <br />-->
+
+</body>
+
+</html>

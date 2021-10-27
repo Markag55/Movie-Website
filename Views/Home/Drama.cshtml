@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Drama";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="~/css/CapstoneStyleSheet.css" rel="stylesheet" />
+    <title>Drama</title>
+    <link id="littleLogo" rel="shortcut icon" href="~/Images/Logo.png" sizes="30x30" />
+</head>
+<body>
+
+    <!--<br />
+    <br />
+    <br />
+    <br />-->
+
+    <div class="genre"><h1>Drama</h1></div>
+
+    <div class="dropdown">
+        <button class="btn btn-outline-secondary float-right dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" asp-controller="Home" asp-action="Drama" asp-route-sort="[primaryTitle]">A-Z</a>
+            <a class="dropdown-item" asp-controller="Home" asp-action="Drama" asp-route-sort="[primaryTitle] DESC">Z-A</a>
+            <a class="dropdown-item" asp-controller="Home" asp-action="Drama" asp-route-sort="[startYear] ASC">Oldest</a>
+            <a class="dropdown-item" asp-controller="Home" asp-action="Drama" asp-route-sort="[startYear] DESC">Newest</a>
+        </div>
+        <table class="table table-bordered table-striped" style="color: #772F1A;
+        font-family: Century">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+
+                    foreach (var movies in Model)
+                    {
+                        <tr>
+                            <td>@movies.primaryTitle</td>
+                            <td>@movies.startYear</td>
+                            <td>@movies.genres</td>
+                            <td>
+                                <a asp-controller="Home" asp-action="InformationTemplate" asp-route-primarytitle="@movies.primaryTitle">View</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+
+</body>
+</html>
