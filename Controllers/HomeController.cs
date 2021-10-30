@@ -289,7 +289,7 @@ namespace CapProj_Updated_.Controllers
         }
 
 
-        public IActionResult Search(string title)
+        public IActionResult Search(string search)
         {
             if (movies.Count > 0)
             {
@@ -299,7 +299,7 @@ namespace CapProj_Updated_.Controllers
             {
                 connection.Open();
                 OleDbDataReader dr = null;
-                OleDbCommand command = new OleDbCommand("SELECT TOP 1000 [tconst],[titleType],[primaryTitle],[originalTitle],[isAdult],[startYear],[endYear],[genres]FROM[titleBasics] Where [primaryTitle] like" + "'%" + title + "%'" +  "and [titleType] like 'Movie' and ([startYear] like '%1%' or [startYear] like '%2%') and [isAdult] like '0' order by primaryTitle", connection);
+                OleDbCommand command = new OleDbCommand("SELECT TOP 1000 [tconst],[titleType],[primaryTitle],[originalTitle],[isAdult],[startYear],[endYear],[genres]FROM[titleBasics] Where [primaryTitle] like" + "'%" + search + "%'" +  "and [titleType] like 'Movie' and ([startYear] like '%1%' or [startYear] like '%2%') and [isAdult] like '0' order by primaryTitle", connection);
                 dr = command.ExecuteReader();
                 while (dr.Read())
                 {
